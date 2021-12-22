@@ -1,0 +1,50 @@
+﻿<ArcGIS defaultAssembly="ORMAPCancelledNumbers.dll" defaultNamespace="ORMAPCancelledNumbers" xmlns="http://schemas.esri.com/DADF/Registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.esri.com/DADF/Registry file:///C:/Program%20Files/ArcGIS/Pro/bin/ArcGIS.Desktop.Framework.xsd">
+  <AddInInfo id="{ba1d9e2e-9d86-4243-87fc-b6241b7406c1}" version="1.1" desktopVersion="2.8.29751">
+    <Name>ORMAPCancelledNumbers</Name>
+    <Description>ORMAPCancelledNumbers description</Description>
+    <Image>Images\AddinDesktop32.png</Image>
+    <Author>ShadCampbell</Author>
+    <Company>ORMAP</Company>
+    <Date>9/3/2021 3:25:59 PM</Date>
+    <Subject>Editing</Subject>
+    <!-- Note subject can be one or more of these topics:
+                    Content, Framework, Editing, Geodatabase, Geometry, Geoprocessing, Layouts, Map Authoring, Map Exploration -->
+  </AddInInfo>
+  
+  <!--<conditions>
+  <insertCondition id="ORMAP_CancelledNums_condition" caption="Toggle Controls">
+      <state id="ORMAP_CancelledNums_state" />
+    </insertCondition>
+  </conditions>-->
+  
+  
+  <modules>
+    <insertModule id="ORMAPCancelledNumbers_Module" className="CancelledNumbersModule" autoLoad="true" caption="CancelledNumbersModule">
+      <!-- uncomment to have the control hosted on a separate tab-->
+      <tabs>
+        <tab id="ORMAPTools_Tab" caption="ORMAP Tools" keytip="P">
+          <group refID="ORMAPTools_Group" />
+        </tab>
+      </tabs>
+      <groups>
+        <!-- comment this out if you have no controls on the Addin tab to avoid
+              an empty group-->
+        <group id="ORMAPTools_Group" caption="" appearsOnAddInTab="false" keytip="P">
+          <!-- host controls within groups -->
+          <button refID="ORMAPCancelledNumbers_CancelledNumbersDockpane_ShowButton" size="large" />
+        </group>
+      </groups>
+      <controls>
+        <!-- add your controls here -->
+        <button id="ORMAPCancelledNumbers_CancelledNumbersDockpane_ShowButton" caption="Cancelled Numbers Manager" className="CancelledNumbersDockpane_ShowButton" loadOnClick="true" smallImage="pack://application:,,,/ArcGIS.Desktop.Resources;component/Images/DataReviewerSessionNew16.png" largeImage="pack://application:,,,/ArcGIS.Desktop.Resources;component/Images/DataReviewerSessionNew32.png" keytip="P">
+          <tooltip heading="Show Cancelled Numbers Manager">This will open the Cancelled Numbers Manager which can be used to manage the content and order of Cancelled Numbers.<disabledText /></tooltip>
+        </button>
+      </controls>
+      <dockPanes>
+        <dockPane id="ORMAPCancelledNumbers_CancelledNumbersDockpane" caption="Cancelled Numbers Manager" className="CancelledNumbersDockpaneViewModel" dock="float" dockWith="esri_core_projectDockPane">
+          <content className="CancelledNumbersDockpaneView" />
+        </dockPane>
+      </dockPanes>
+    </insertModule>
+  </modules>
+</ArcGIS>
