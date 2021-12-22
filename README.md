@@ -3,10 +3,10 @@
 The ORMAP Cancelled Numbers Manager is an Add-in for ArcGIS Pro that helps managing cancelled numbers within the ArcGIS Pro software.  It allows users to manually add, delete, or move (rearrange) one or more cancelled number items.  Cancelled numbers are stored in the ORMAP data schema table named "CancelledNumbers".  This tool is an interface which allows easy and quick interaction with the items in that table. 
 
 
-![alt text](https://raw.githubusercontent.com/ORMAPtools/CancelledNumbersManager/master/Images/toolbar1.png "Image of the toolbar")
+![alt text](https://raw.githubusercontent.com/ORMAPtools/CancelledNumbersManager/main/Images/Toolbar1.PNG "Image of the toolbar")
 
 
-![alt text](https://raw.githubusercontent.com/ORMAPtools/CancelledNumbersManager/master/Images/toolbar2.png "Image of the toolbar")
+![alt text](https://raw.githubusercontent.com/ORMAPtools/CancelledNumbersManager/main/Images/Toolbar2.PNG "Image of the toolbar")
 
 ## Download
 The download contains the Add-in. Additional information about installation and requirments are below.
