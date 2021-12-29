@@ -14,7 +14,7 @@ The download contains the Add-in. Additional information about installation and 
 
 
 ## Installation
-Installation of add-ins can be found HERE:
+Installation instructions for add-ins can be found HERE:
 > [Manage add-ins](https://raw.githubusercontent.com/ORMAPtools/CancelledNumbersManager/master/Install/ORMAPCancelledNumbers.esriAddinX).
 
 This Add-In has a few requirements.

@@ -1,4 +1,6 @@
 ﻿using ArcGIS.Core.Data;
+using ArcGIS.Desktop.Core;
+using ArcGIS.Desktop.Core.Events;
 using ArcGIS.Desktop.Editing;
 using ArcGIS.Desktop.Framework;
 using ArcGIS.Desktop.Framework.Contracts;
@@ -36,46 +38,21 @@ namespace ORMAPCancelledNumbers
             SearchCommand = new RelayCommand(SearchCommandExecute);
             
             this.PropertyChanged += OnFeatureDataChanged;
-            ActiveMapViewChangedEvent.Subscribe(OnMapViewActivateEvent);
+            MapViewInitializedEvent.Subscribe(OnMapViewInitializedEvent);
             StandaloneTablesRemovedEvent.Subscribe(OnStandaloneTablesRemovedEvent);
         }
+
         #endregion Constructors
 
 
         #region EventHandlers
 
-        private async void OnStandaloneTablesRemovedEvent(StandaloneTableEventArgs obj)
+        private async void OnMapViewInitializedEvent(MapViewEventArgs obj)
         {
-            if (obj.Tables.Any(a => a.Name == "CancelledNumbers"))
+            if (obj.MapView.IsReady)
             {
-                if (!await TestPrereqsAsync(false))
-                {
-                    MapNumbers = null;
-                    this.Hide();
-                }
-            }
-        }
+                _activeMapView = obj.MapView;
 
-        protected override async void OnShow(bool isVisible)
-        {
-            if (isVisible && MapView.Active != null && MapNumbers is null)
-            {
-                if (await TestPrereqsAsync(true))
-                {
-                    GetMapNumbers();
-                }
-                else
-                {
-                    this.Hide();
-                }
-            }
-        }
-
-
-        private async void OnMapViewActivateEvent(ActiveMapViewChangedEventArgs obj)
-        {
-            if (obj.IncomingView != null)
-            {
                 if (await TestPrereqsAsync(false))
                 {
                     GetMapNumbers();
@@ -87,6 +64,38 @@ namespace ORMAPCancelledNumbers
             }
         }
 
+        private async void OnStandaloneTablesRemovedEvent(StandaloneTableEventArgs obj)
+        {
+            if (obj.Tables.Any(a => a.Name.ToUpper() == "CANCELLEDNUMBERS"))
+            {
+                if (!await TestPrereqsAsync(true))
+                {
+                    MapNumbers = null;
+                    this.Hide();
+                }
+            }
+        }
+
+        protected override async void OnShow(bool isVisible)
+        {
+
+            if (isVisible && MapNumbers is null && _showClicked)
+            {
+                _showClicked = false;
+
+                if (_activeMapView is null && MapView.Active != null) _activeMapView = MapView.Active;
+
+                if (await TestPrereqsAsync(true))
+                {
+                    GetMapNumbers();
+                }
+                else
+                {
+                    this.Hide();
+                }
+
+            }
+        }
 
         private void OnFeatureDataChanged(object sender, PropertyChangedEventArgs e)
         {
@@ -95,15 +104,18 @@ namespace ORMAPCancelledNumbers
                 _featuresChanged = FeatureData != null ? true : false;
             }
         }
+
         #endregion EventHandlers
 
 
         #region PrivateProperties
 
         private const string _dockPaneID = "ORMAPCancelledNumbers_CancelledNumbersDockpane";
+        internal static bool _showClicked = false;
         private bool _modalResult { get; set; }
         private List<long> _deleteOIDs { get; set; }
         private bool _featuresChanged { get; set; } = false;
+        private MapView _activeMapView { get; set; }
 
         #endregion PrivateProperties
 
@@ -121,6 +133,8 @@ namespace ORMAPCancelledNumbers
         public ICommand CancelCommand { get; private set; }
         public ICommand CloseModalCommand { get; private set; }
         public ICommand MapNumberChangedCommand { get; private set; }
+
+
 
 
         private List<string> _mapNumbers;
@@ -275,7 +289,7 @@ namespace ORMAPCancelledNumbers
                     queryFilter.WhereClause = $@"MapNumber = '{MapNumber}'";
 
                     var list = new List<CancelledNumsData>();
-                    var table = MapView.Active.Map.FindStandaloneTables("CancelledNumbers").First() as StandaloneTable;
+                    var table = _activeMapView.Map.FindStandaloneTables("CancelledNumbers").First() as StandaloneTable;
                     using (RowCursor rowCursor = table.Search(queryFilter))
                     {
                         while (rowCursor.MoveNext())
@@ -449,11 +463,12 @@ namespace ORMAPCancelledNumbers
 
         private async Task UpdateCancelledNumbersAsync()
         {
+            
             await QueuedTask.Run(() =>
             {
                 try
                 {
-                    var table = MapView.Active.Map.FindStandaloneTables("CancelledNumbers").First() as StandaloneTable;
+                    var table = _activeMapView.Map.FindStandaloneTables("CancelledNumbers").First() as StandaloneTable;
 
                     var editOperation = new EditOperation();
                     editOperation.Name = "Delete Features";
@@ -497,7 +512,7 @@ namespace ORMAPCancelledNumbers
                 try
                 {
                     //-- Populate the MapNumbers AutoComplete Text Box.
-                    var table = MapView.Active.Map.FindStandaloneTables("CancelledNumbers").First() as StandaloneTable;
+                    var table = _activeMapView.Map.FindStandaloneTables("CancelledNumbers").First() as StandaloneTable;
                     var queryFilter = new QueryFilter();
                     queryFilter.WhereClause = "MAPNUMBER IS NOT NULL";
                     queryFilter.PrefixClause = "DISTINCT";
@@ -511,7 +526,7 @@ namespace ORMAPCancelledNumbers
                         {
                             using (Row current = rowCursor.Current)
                             {
-                                list.Add(current["MapNumber"].ToString());
+                                list.Add(current["MAPNUMBER"].ToString());
                             }
                         }
                     }
@@ -530,26 +545,26 @@ namespace ORMAPCancelledNumbers
 
             return await QueuedTask.Run(() =>
             {
-                if (MapView.Active is null)
-                {
+                if (_activeMapView is null)
+                    {
                     if (showErrors) ShowErrors("An active map must exist in this project to use this tool.");
                     return false;
                 }
 
-                if (MapView.Active.Map.FindStandaloneTables("CancelledNumbers").Count < 1)
+                if (_activeMapView.Map.FindStandaloneTables("CancelledNumbers").Count < 1)
                 {
                     if (showErrors) ShowErrors("A table named 'CancelledNumbers' must exist in this project to use this tool.");
                     return false;
                 }
 
-                var table = MapView.Active.Map.FindStandaloneTables("CancelledNumbers").First() as StandaloneTable;
+                var table = _activeMapView.Map.FindStandaloneTables("CancelledNumbers").First() as StandaloneTable;
                 var fields = table.GetFieldDescriptions();
-                List<string> reqFields = new List<string>() { "MapNumber", "Taxlot", "SortOrder" };
+                var reqFields = new List<string>() { "MapNumber", "Taxlot", "SortOrder" };
                 foreach (var f in reqFields)
                 {
-                    if (fields.Find(x => x.Name == f) == null)
+                    if (fields.Find(x => x.Name.ToUpper() == f.ToUpper()) == null)
                     {
-                        if (showErrors) ShowErrors("A field named '" + f + "' must exist in the CancelledNumbers table to use this tool.");
+                        if (showErrors) ShowErrors("A field named '" + f + "' must exist in the CancelledNumbers table to use this tool. It is not case sesitive.");
                         return false;
                     }
                 }
@@ -594,8 +609,9 @@ namespace ORMAPCancelledNumbers
 
         #region InternalMethods
 
-        internal static void Show()
+        public static void Show()
         {
+            _showClicked = true;
             DockPane pane = FrameworkApplication.DockPaneManager.Find(_dockPaneID);
             if (pane == null)
                 return;

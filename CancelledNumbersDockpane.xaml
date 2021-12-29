@@ -13,7 +13,9 @@
     d:DataContext="{Binding Path=ui.CancelledNumbersDockpaneViewModel}"
     d:DesignHeight="300"
     d:DesignWidth="225"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    TextOptions.TextFormattingMode="Display"
+    >
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -36,17 +38,22 @@
             <Grid
                 Width="150"
                 Height="auto"
-                Background="white">
+                Background="{DynamicResource Esri_DialogFrameBackgroundBrush}" 
+                >
                 <Grid>
                     <TextBlock
                         x:Name="textBlock"
+                        Foreground="{DynamicResource Esri_TextStyleDefaultBrush}"
                         Margin="5,5,5,45.4"
                         Text="{Binding ModalMessage, UpdateSourceTrigger=PropertyChanged}"
-                        TextWrapping="Wrap" />
+                        TextWrapping="Wrap"
+                        />
                     <Button
                         x:Name="btnYesModal"
-                        Width="52"
-                        Height="23"
+                        Style="{DynamicResource Esri_Button}" 
+                        MinWidth="52"
+                        MinHeight="23"
+                        Padding="0,0"
                         Margin="36,0,62,10"
                         VerticalAlignment="Bottom"
                         Command="{Binding CloseModalCommand}"
@@ -54,8 +61,10 @@
                         Content="Yes" />
                     <Button
                         x:Name="btnNoModal"
-                        Width="52"
-                        Height="23"
+                        Style="{DynamicResource Esri_Button}" 
+                        MinWidth="52"
+                        MinHeight="23"
+                        Padding="0,0"
                         Margin="93,0,5,10"
                         VerticalAlignment="Bottom"
                         Command="{Binding CloseModalCommand}"
@@ -77,12 +86,11 @@
             RowHeaderWidth="0"
             SelectedItemsList="{Binding SelectedItemsList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             SelectedValuePath="SortOrder"
-            SelectionMode="Extended">
-            <DataGrid.Resources>
-                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="{Binding Path=Color, Source={x:Static SystemColors.HighlightBrush}}" />
-                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="White" />
-            </DataGrid.Resources>
-            <DataGrid.Columns>
+            SelectionMode="Extended"
+            Style="{DynamicResource Esri_DataGrid}"
+            ScrollViewer.CanContentScroll="True"
+            >
+                <DataGrid.Columns>
                 <DataGridTextColumn
                     Width="*"
                     Binding="{Binding Taxlot}"
@@ -105,9 +113,22 @@
             ItemsSource="{Binding MapNumbers}"
             MinimumPrefixLength="4"
             IsEnabled="{Binding AllowTextSearch, Mode=OneWay}"
-            Text="{Binding SearchText, Mode=TwoWay}">
+            Text="{Binding SearchText, Mode=TwoWay}"
+                            Background="{DynamicResource Esri_ControlBackgroundBrush}" 
+                Foreground="{DynamicResource Esri_TextStyleDefaultBrush}"
+           
+            >
 
-            <i:Interaction.Triggers>
+
+                <!--
+
+                
+                
+                
+                -->
+
+
+                <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectionChanged">
                     <i:InvokeCommandAction Command="{Binding SearchCommand}" />
                 </i:EventTrigger>
@@ -125,51 +146,65 @@
             HorizontalContentAlignment="Right"
             VerticalContentAlignment="Center"
             Content="Map #:" />
-        <Button
+
+
+            <Button
             x:Name="Top"
-            Width="52"
-            Height="23"
+            MinWidth="52"
+            MinHeight="23"
+            Padding="0,0"
             Margin="0,43,10,0"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
             Command="{Binding TopCommand}"
             CommandParameter="++"
-            Content="Top" />
-        <Button
+            Content="Top"
+            Style="{DynamicResource Esri_Button}" 
+                />
+
+
+            <Button
             x:Name="Up"
-            Width="52"
-            Height="23"
+            MinWidth="52"
+            MinHeight="23"
+            Padding="0,0"
             Margin="0,71,10,0"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
             Command="{Binding UpCommand}"
             CommandParameter="+"
-            Content="Up" />
+            Content="Up" 
+            Style="{DynamicResource Esri_Button}" />
         <Button
             x:Name="Down"
-            Width="52"
-            Height="23"
+            MinWidth="52"
+            MinHeight="23"
+            Padding="0,0"
             Margin="0,108,10,0"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
             Command="{Binding DownCommand}"
             CommandParameter="-"
-            Content="Down" />
+            Content="Down"
+            Style="{DynamicResource Esri_Button}" />
         <Button
             x:Name="Bottom"
-            Width="52"
-            Height="23"
+            Style="{DynamicResource Esri_Button}" 
+            MinWidth="52"
+            MinHeight="23"
+            Padding="0,0"
             Margin="0,136,10,0"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
             Command="{Binding BottomCommand}"
             CommandParameter="--"
-            Content="Bottom" />
+            Content="Bottom"/>
         <Button
             x:Name="Cancel"
-            Grid.RowSpan="2"
-            Width="68"
-            Height="23"
+            Style="{DynamicResource Esri_Button}" 
+            MinWidth="68"
+            MinHeight="23"
+            Padding="0,0"
             Margin="0,0,10,9"
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
@@ -178,8 +213,10 @@
         <Button
             x:Name="Update"
             Grid.RowSpan="2"
-            Width="68"
-            Height="23"
+            Style="{DynamicResource Esri_Button}" 
+            MinWidth="68"
+            MinHeight="23"
+            Padding="0,0"
             Margin="0,0,83,9"
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
@@ -187,8 +224,10 @@
             Content="Update" />
         <Button
             x:Name="Add"
-            Width="52"
-            Height="23"
+            Style="{DynamicResource Esri_Button}" 
+            MinWidth="52"
+            MinHeight="23"
+            Padding="0,0"
             Margin="0,0,9.8,42"
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
@@ -197,8 +236,10 @@
             RenderTransformOrigin="0.514,0.196" />
         <Button
             x:Name="Delete"
-            Width="52"
-            Height="22"
+            Style="{DynamicResource Esri_Button}" 
+            MinWidth="52"
+            MinHeight="23"
+            Padding="0,0"
             Margin="0,174,10,0"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"

@@ -1,5 +1,5 @@
 ﻿<ArcGIS defaultAssembly="ORMAPCancelledNumbers.dll" defaultNamespace="ORMAPCancelledNumbers" xmlns="http://schemas.esri.com/DADF/Registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.esri.com/DADF/Registry file:///C:/Program%20Files/ArcGIS/Pro/bin/ArcGIS.Desktop.Framework.xsd">
-  <AddInInfo id="{ba1d9e2e-9d86-4243-87fc-b6241b7406c1}" version="1.1" desktopVersion="2.8.29751">
+  <AddInInfo id="{ba1d9e2e-9d86-4243-87fc-b6241b7406c1}" version="1.2" desktopVersion="2.7">
     <Name>ORMAPCancelledNumbers</Name>
     <Description>ORMAPCancelledNumbers description</Description>
     <Image>Images\AddinDesktop32.png</Image>
