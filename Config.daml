@@ -1,5 +1,6 @@
-﻿<ArcGIS defaultAssembly="ORMAPCancelledNumbers.dll" defaultNamespace="ORMAPCancelledNumbers" xmlns="http://schemas.esri.com/DADF/Registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.esri.com/DADF/Registry file:///C:/Program%20Files/ArcGIS/Pro/bin/ArcGIS.Desktop.Framework.xsd">
-  <AddInInfo id="{ba1d9e2e-9d86-4243-87fc-b6241b7406c1}" version="1.2" desktopVersion="2.7">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArcGIS defaultAssembly="ORMAPCancelledNumbers.dll" defaultNamespace="ORMAPCancelledNumbers" xmlns="http://schemas.esri.com/DADF/Registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.esri.com/DADF/Registry file:///C:/Program%20Files/ArcGIS/Pro/bin/ArcGIS.Desktop.Framework.xsd">
+  <AddInInfo id="{ba1d9e2e-9d86-4243-87fc-b6241b7406c1}" version="1.2" desktopVersion="3.1.41833">
     <Name>ORMAPCancelledNumbers</Name>
     <Description>ORMAPCancelledNumbers description</Description>
     <Image>Images\AddinDesktop32.png</Image>
@@ -10,14 +11,11 @@
     <!-- Note subject can be one or more of these topics:
                     Content, Framework, Editing, Geodatabase, Geometry, Geoprocessing, Layouts, Map Authoring, Map Exploration -->
   </AddInInfo>
-  
   <!--<conditions>
   <insertCondition id="ORMAP_CancelledNums_condition" caption="Toggle Controls">
       <state id="ORMAP_CancelledNums_state" />
     </insertCondition>
   </conditions>-->
-  
-  
   <modules>
     <insertModule id="ORMAPCancelledNumbers_Module" className="CancelledNumbersModule" autoLoad="true" caption="CancelledNumbersModule">
       <!-- uncomment to have the control hosted on a separate tab-->

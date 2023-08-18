@@ -23,32 +23,36 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+    <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled">
         <Grid MinHeight="300"
               MinWidth="200"
           >
-        <ModalControl:Modal
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="68*"/>
+                <ColumnDefinition Width="157*"/>
+            </Grid.ColumnDefinitions>
+            <ModalControl:Modal
             x:Name="modal"
             Panel.ZIndex="10"
-            IsOpen="{Binding IsModalOpen}"
+            IsOpen="{Binding IsModalOpen}" Grid.ColumnSpan="2"
             >
-            <ModalControl:Modal.Background>
-                <SolidColorBrush Opacity="0.5" Color="Gray" />
-            </ModalControl:Modal.Background>
-            <Grid
+                <ModalControl:Modal.Background>
+                    <SolidColorBrush Opacity="0.5" Color="Gray" />
+                </ModalControl:Modal.Background>
+                <Grid
                 Width="150"
                 Height="auto"
                 Background="{DynamicResource Esri_DialogFrameBackgroundBrush}" 
                 >
-                <Grid>
-                    <TextBlock
+                    <Grid>
+                        <TextBlock
                         x:Name="textBlock"
                         Foreground="{DynamicResource Esri_TextStyleDefaultBrush}"
                         Margin="5,5,5,45.4"
                         Text="{Binding ModalMessage, UpdateSourceTrigger=PropertyChanged}"
                         TextWrapping="Wrap"
                         />
-                    <Button
+                        <Button
                         x:Name="btnYesModal"
                         Style="{DynamicResource Esri_Button}" 
                         MinWidth="52"
@@ -59,7 +63,7 @@
                         Command="{Binding CloseModalCommand}"
                         CommandParameter="true"
                         Content="Yes" />
-                    <Button
+                        <Button
                         x:Name="btnNoModal"
                         Style="{DynamicResource Esri_Button}" 
                         MinWidth="52"
@@ -70,12 +74,12 @@
                         Command="{Binding CloseModalCommand}"
                         CommandParameter="false"
                         Content="No" />
+                    </Grid>
                 </Grid>
-            </Grid>
-        </ModalControl:Modal>
+            </ModalControl:Modal>
 
 
-        <ui:CustomDataGrid
+            <ui:CustomDataGrid
             x:Name="dataGrid"
             Margin="10,33,67,70"
             AutoGenerateColumns="False"
@@ -88,25 +92,25 @@
             SelectedValuePath="SortOrder"
             SelectionMode="Extended"
             Style="{DynamicResource Esri_DataGrid}"
-            ScrollViewer.CanContentScroll="True"
+            ScrollViewer.CanContentScroll="True" Grid.ColumnSpan="2"
             >
                 <DataGrid.Columns>
-                <DataGridTextColumn
+                    <DataGridTextColumn
                     Width="*"
                     Binding="{Binding Taxlot}"
                     Header="Taxlot" />
-                <DataGridTextColumn
+                    <DataGridTextColumn
                     Binding="{Binding SortOrder}"
                     Header="SortOrder"
                     Visibility="Collapsed" />
-            </DataGrid.Columns>
-        </ui:CustomDataGrid>
+                </DataGrid.Columns>
+            </ui:CustomDataGrid>
 
             <controls:AutoCompleteBox
             x:Name="MapTaxlot"
             Width="90"
             Height="23"
-            Margin="0,5,66.8,0"
+            Margin="0,5,67,0"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
             IsTextCompletionEnabled="false"
@@ -115,7 +119,7 @@
             IsEnabled="{Binding AllowTextSearch, Mode=OneWay}"
             Text="{Binding SearchText, Mode=TwoWay}"
                             Background="{DynamicResource Esri_ControlBackgroundBrush}" 
-                Foreground="{DynamicResource Esri_TextStyleDefaultBrush}"
+                Foreground="{DynamicResource Esri_TextStyleDefaultBrush}" Grid.Column="1"
            
             >
 
@@ -129,17 +133,17 @@
 
 
                 <i:Interaction.Triggers>
-                <i:EventTrigger EventName="SelectionChanged">
-                    <i:InvokeCommandAction Command="{Binding SearchCommand}" />
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding SearchCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
 
-        </controls:AutoCompleteBox>
+            </controls:AutoCompleteBox>
 
-        <Label
+            <Label
             x:Name="MapTaxlotLabel"
             Width="53"
-            Margin="0,5,161.8,0"
+            Margin="0,5,5,0"
             Padding="0,4"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
@@ -159,7 +163,7 @@
             Command="{Binding TopCommand}"
             CommandParameter="++"
             Content="Top"
-            Style="{DynamicResource Esri_Button}" 
+            Style="{DynamicResource Esri_Button}" Grid.Column="1" 
                 />
 
 
@@ -174,8 +178,8 @@
             Command="{Binding UpCommand}"
             CommandParameter="+"
             Content="Up" 
-            Style="{DynamicResource Esri_Button}" />
-        <Button
+            Style="{DynamicResource Esri_Button}" Grid.Column="1" />
+            <Button
             x:Name="Down"
             MinWidth="52"
             MinHeight="23"
@@ -186,8 +190,8 @@
             Command="{Binding DownCommand}"
             CommandParameter="-"
             Content="Down"
-            Style="{DynamicResource Esri_Button}" />
-        <Button
+            Style="{DynamicResource Esri_Button}" Grid.Column="1" />
+            <Button
             x:Name="Bottom"
             Style="{DynamicResource Esri_Button}" 
             MinWidth="52"
@@ -198,8 +202,8 @@
             VerticalAlignment="Top"
             Command="{Binding BottomCommand}"
             CommandParameter="--"
-            Content="Bottom"/>
-        <Button
+            Content="Bottom" Grid.Column="1"/>
+            <Button
             x:Name="Cancel"
             Style="{DynamicResource Esri_Button}" 
             MinWidth="68"
@@ -209,10 +213,9 @@
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
             Command="{Binding CancelCommand}"
-            Content="Cancel" />
-        <Button
+            Content="Cancel" Grid.Column="1" />
+            <Button
             x:Name="Update"
-            Grid.RowSpan="2"
             Style="{DynamicResource Esri_Button}" 
             MinWidth="68"
             MinHeight="23"
@@ -221,20 +224,20 @@
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
             Command="{Binding UpdateCommand}"
-            Content="Update" />
-        <Button
+            Content="Update" Grid.Column="1" />
+            <Button
             x:Name="Add"
             Style="{DynamicResource Esri_Button}" 
             MinWidth="52"
             MinHeight="23"
             Padding="0,0"
-            Margin="0,0,9.8,42"
+            Margin="0,0,10,42"
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
             Command="{Binding AddCommand}"
             Content="Add"
-            RenderTransformOrigin="0.514,0.196" />
-        <Button
+            RenderTransformOrigin="0.514,0.196" Grid.Column="1" />
+            <Button
             x:Name="Delete"
             Style="{DynamicResource Esri_Button}" 
             MinWidth="52"
@@ -245,14 +248,14 @@
             VerticalAlignment="Top"
             Command="{Binding DeleteCommand}"
             Content="Delete"
-            RenderTransformOrigin="0.514,0.196" />
-        <TextBox
+            RenderTransformOrigin="0.514,0.196" Grid.Column="1" />
+            <TextBox
             x:Name="NewCancelledNum"
             Height="23"
-            Margin="10,0,66.8,42"
+            Margin="10,0,67,42"
             VerticalAlignment="Bottom"
             Text="{Binding Path=NewCancelledNum, UpdateSourceTrigger=PropertyChanged}"
-            TextWrapping="Wrap" />
-    </Grid>
+            TextWrapping="Wrap" Grid.ColumnSpan="2" />
+        </Grid>
     </ScrollViewer>
 </UserControl>

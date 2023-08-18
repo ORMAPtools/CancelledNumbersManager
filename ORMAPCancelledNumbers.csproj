@@ -1,156 +1,108 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{BA1D9E2E-9D86-4243-87FC-B6241B7406C1}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ORMAPCancelledNumbers</RootNamespace>
-    <AssemblyName>ORMAPCancelledNumbers</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <StartAction>Program</StartAction>
-    <StartProgram>C:\Program Files\ArcGIS\Pro\bin\ArcGISPro.exe</StartProgram>
-    <PlatformTarget>x64</PlatformTarget>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <StartAction>Program</StartAction>
-    <StartProgram>C:\Program Files\ArcGIS\Pro\bin\ArcGISPro.exe</StartProgram>
-    <PlatformTarget>x64</PlatformTarget>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ArcGISFolder>$([MSBuild]::GetRegistryValueFromView('HKEY_LOCAL_MACHINE\SOFTWARE\ESRI\ArcGISPro', 'InstallDir', null, RegistryView.Registry64))</ArcGISFolder>
-    <ArcGISFolder Condition="'$(ArcGISFolder)' == ''">$(registry:HKEY_CURRENT_USER\SOFTWARE\ESRI\ArcGISPro@InstallDir)</ArcGISFolder>
-  </PropertyGroup>
-  <PropertyGroup>
-    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <RuntimeIdentifier>win10-x64</RuntimeIdentifier>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <NoWarn>CA1416</NoWarn>
+    <UseWindowsForms>true</UseWindowsForms>
+    <UseWPF>true</UseWPF>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DotNetProjects.Input.Toolkit, Version=6.1.91.0, Culture=neutral, PublicKeyToken=79778c5f2eed289b, processorArchitecture=MSIL">
-      <HintPath>packages\DotNetProjects.WpfToolkit.Input.6.1.91\lib\net40\DotNetProjects.Input.Toolkit.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Windows" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="WindowsBase" />
-    <Reference Include="System.Xaml" />
     <Reference Include="ArcGIS.Desktop.Framework">
       <HintPath>C:\Program Files\ArcGIS\Pro\bin\ArcGIS.Desktop.Framework.dll</HintPath>
+      <CopyLocal>False</CopyLocal>
       <Private>False</Private>
     </Reference>
     <Reference Include="ArcGIS.Core">
       <HintPath>C:\Program Files\ArcGIS\Pro\bin\ArcGIS.Core.dll</HintPath>
+      <CopyLocal>False</CopyLocal>
       <Private>False</Private>
     </Reference>
     <Reference Include="ArcGIS.Desktop.Core">
       <HintPath>C:\Program Files\ArcGIS\Pro\bin\Extensions\Core\ArcGIS.Desktop.Core.dll</HintPath>
+      <CopyLocal>False</CopyLocal>
       <Private>False</Private>
     </Reference>
     <Reference Include="ArcGIS.Desktop.Mapping">
       <HintPath>C:\Program Files\ArcGIS\Pro\bin\Extensions\Mapping\ArcGIS.Desktop.Mapping.dll</HintPath>
+      <CopyLocal>False</CopyLocal>
       <Private>False</Private>
     </Reference>
     <Reference Include="ArcGIS.Desktop.Catalog">
       <HintPath>C:\Program Files\ArcGIS\Pro\bin\Extensions\Catalog\ArcGIS.Desktop.Catalog.dll</HintPath>
+      <CopyLocal>False</CopyLocal>
       <Private>False</Private>
     </Reference>
     <Reference Include="ArcGIS.Desktop.Editing">
       <HintPath>C:\Program Files\ArcGIS\Pro\bin\Extensions\Editing\ArcGIS.Desktop.Editing.dll</HintPath>
+      <CopyLocal>False</CopyLocal>
       <Private>False</Private>
     </Reference>
     <Reference Include="ArcGIS.Desktop.Extensions">
       <HintPath>C:\Program Files\ArcGIS\Pro\bin\Extensions\DesktopExtensions\ArcGIS.Desktop.Extensions.dll</HintPath>
+      <CopyLocal>False</CopyLocal>
       <Private>False</Private>
     </Reference>
     <Reference Include="ArcGIS.Desktop.GeoProcessing">
       <HintPath>C:\Program Files\ArcGIS\Pro\bin\Extensions\GeoProcessing\ArcGIS.Desktop.GeoProcessing.dll</HintPath>
+      <CopyLocal>False</CopyLocal>
       <Private>False</Private>
     </Reference>
     <Reference Include="ArcGIS.Desktop.Layouts">
       <HintPath>C:\Program Files\ArcGIS\Pro\bin\Extensions\Layout\ArcGIS.Desktop.Layouts.dll</HintPath>
+      <CopyLocal>False</CopyLocal>
       <Private>False</Private>
     </Reference>
     <Reference Include="ArcGIS.Desktop.Shared.Wpf">
       <HintPath>C:\Program Files\ArcGIS\Pro\bin\ArcGIS.Desktop.Shared.Wpf.dll</HintPath>
+      <CopyLocal>False</CopyLocal>
       <Private>False</Private>
     </Reference>
     <Reference Include="ArcGIS.Desktop.Ribbon.Wpf">
       <HintPath>C:\Program Files\ArcGIS\Pro\bin\ArcGIS.Desktop.Ribbon.Wpf.dll</HintPath>
+      <CopyLocal>False</CopyLocal>
       <Private>False</Private>
     </Reference>
     <Reference Include="ArcGIS.Desktop.DataGrid.Contrib.Wpf">
       <HintPath>C:\Program Files\ArcGIS\Pro\bin\ArcGIS.Desktop.DataGrid.Contrib.Wpf.dll</HintPath>
+      <CopyLocal>False</CopyLocal>
       <Private>False</Private>
     </Reference>
     <Reference Include="ArcGIS.Desktop.Resources">
       <HintPath>C:\Program Files\ArcGIS\Pro\bin\ArcGIS.Desktop.Resources.dll</HintPath>
+      <CopyLocal>False</CopyLocal>
       <Private>False</Private>
     </Reference>
     <Reference Include="ArcGIS.Desktop.Resources">
       <HintPath>C:\Program Files\ArcGIS\Pro\bin\ArcGIS.Desktop.Resources.dll</HintPath>
+      <CopyLocal>False</CopyLocal>
       <Private>False</Private>
     </Reference>
     <Reference Include="ESRI.ArcGIS.ItemIndex">
       <HintPath>C:\Program Files\ArcGIS\Pro\bin\ESRI.ArcGIS.ItemIndex.dll</HintPath>
+      <CopyLocal>False</CopyLocal>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <AddInContent Include="Config.daml" />
-    <AddInContent Include="Images\AddInDesktop16.png" />
-    <AddInContent Include="Images\AddInDesktop32.png" />
-    <AddInContent Include="DarkImages\AddInDesktop16.png" />
-    <AddInContent Include="DarkImages\AddInDesktop32.png" />
+    <Content Include="Config.daml" />
+    <Content Include="Images\AddInDesktop16.png" />
+    <Content Include="Images\AddInDesktop32.png" />
+    <Content Include="DarkImages\AddInDesktop16.png" />
+    <Content Include="DarkImages\AddInDesktop32.png" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CancelledNumbersDockpane.xaml.cs">
-      <DependentUpon>CancelledNumbersDockpane.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="CancelledNumbersDockpaneViewModel.cs" />
-    <Compile Include="CancelledNumsData.cs" />
-    <Compile Include="CustomDataGrid.cs" />
-    <Compile Include="CancelledNumbersModule.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <ProjectReference Include="..\ModalControl\ModalControl.csproj" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+      <Project>{ec3b2693-423c-452d-af9b-fc25518f4d1c}</Project>
+      <Name>ModalControl</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="CancelledNumbersDockpane.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <Resource Include="Images\Toolbar1.PNG" />
+    <Resource Include="Images\Toolbar2.PNG" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ModalControl\ModalControl.csproj">
@@ -159,47 +111,271 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="DotNetProjects.WpfToolkit.Input" Version="6.1.91" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="packages.config" />
+    <None Include=".gitignore" />
+    <None Include="Backup-2.x.zip" />
+    <None Include="gitignore" />
+    <None Include="LICENSE" />
+    <None Include="ORMAPCancelledNumbers.csproj.user" />
+    <None Include="README.md" />
+    <None Include=".git\COMMIT_EDITMSG" />
+    <None Include=".git\config" />
+    <None Include=".git\description" />
+    <None Include=".git\FETCH_HEAD" />
+    <None Include=".git\HEAD" />
+    <None Include=".git\index" />
+    <None Include=".git\ms-persist.xml" />
+    <None Include=".git\ORIG_HEAD" />
+    <None Include=".git\sourcetreeconfig.json" />
+    <None Include=".git\hooks\applypatch-msg.sample" />
+    <None Include=".git\hooks\commit-msg.sample" />
+    <None Include=".git\hooks\fsmonitor-watchman.sample" />
+    <None Include=".git\hooks\post-update.sample" />
+    <None Include=".git\hooks\pre-applypatch.sample" />
+    <None Include=".git\hooks\pre-commit.sample" />
+    <None Include=".git\hooks\pre-merge-commit.sample" />
+    <None Include=".git\hooks\pre-push.sample" />
+    <None Include=".git\hooks\pre-rebase.sample" />
+    <None Include=".git\hooks\pre-receive.sample" />
+    <None Include=".git\hooks\prepare-commit-msg.sample" />
+    <None Include=".git\hooks\push-to-checkout.sample" />
+    <None Include=".git\hooks\update.sample" />
+    <None Include=".git\info\exclude" />
+    <None Include=".git\logs\HEAD" />
+    <None Include=".git\logs\refs\heads\main" />
+    <None Include=".git\logs\refs\heads\UpgradeTo3X" />
+    <None Include=".git\logs\refs\remotes\origin\main" />
+    <None Include=".git\objects\01\18942a923d37745dced41536d71172f7517deb" />
+    <None Include=".git\objects\02\576f94c0cb12f9e3a5a08225b74a0b926a7b4f" />
+    <None Include=".git\objects\04\9d6dac4981e9f45e02c931fc6ca1eb1418d43a" />
+    <None Include=".git\objects\09\936abc215c10480fd2dc45212cc6bf906f4370" />
+    <None Include=".git\objects\0a\eb5835201d3c81f2251af46d8f8a0ae39c8510" />
+    <None Include=".git\objects\0e\ffdc18de6ccb2d7f69d82e7ef442c9b98e0201" />
+    <None Include=".git\objects\12\d59e16bcfd41927c2200cc2a8cd148da5f6f48" />
+    <None Include=".git\objects\13\0d3472cda8dd07cbb84af0d634797f00f2489a" />
+    <None Include=".git\objects\13\6dd1ba9b12bddbdd31436ad848d22619849f5d" />
+    <None Include=".git\objects\14\ada53e484bd95dfed7f799f9b0363107503869" />
+    <None Include=".git\objects\15\efebfcc028c553761d9f510ac8ed4f19a41442" />
+    <None Include=".git\objects\15\ff9cfa719aec629f4f3eb7758060b61acb0f9a" />
+    <None Include=".git\objects\1c\df236d6da4943ab3f86e67101a84f7d6fe98c3" />
+    <None Include=".git\objects\1d\19084ae65aaaeb71ca629a682655a54848c57e" />
+    <None Include=".git\objects\1d\63a4b1cd63e76f36b4afdcebe0b3746804f2a7" />
+    <None Include=".git\objects\20\e33fe291f36237137d6c7a1b485b28fb0a5d18" />
+    <None Include=".git\objects\23\0ce8da97fb45fba082cdfe248dd5fd79852af5" />
+    <None Include=".git\objects\23\743509e592506a805aa3f4ea4fc3838e3dbc0a" />
+    <None Include=".git\objects\25\41265943aef74062be26b5bd7163fe23388066" />
+    <None Include=".git\objects\25\86ac038a2a3f70fb71ad52a80846f5a6461c25" />
+    <None Include=".git\objects\25\9de8ed0b254aaeec55b522aa4d3ecd6d859f6c" />
+    <None Include=".git\objects\2b\1cad0f07c38fd236d82abfa84a97291a7c471c" />
+    <None Include=".git\objects\2f\ce2884fb935e1d5ee24e509a788287ee6e9de5" />
+    <None Include=".git\objects\33\b253d32581076fa0c2c6a2d9ce164a4f7e8818" />
+    <None Include=".git\objects\34\06b92a3a38bb920a804bdccde3e7e01908729c" />
+    <None Include=".git\objects\37\519ff80ab8908da77712bd6a7dce1592caa13e" />
+    <None Include=".git\objects\43\e6fbfc7bc5797fca6c06ee68ce2d2c97153a69" />
+    <None Include=".git\objects\45\f04d96eb90c115fd665e64f931bf76d78bcc24" />
+    <None Include=".git\objects\4a\50464cb774b6112ccc3a7ebca12df5d6c02562" />
+    <None Include=".git\objects\4f\afb4da53da89a456065ac9241a9a12e0df8ceb" />
+    <None Include=".git\objects\51\a7c194402a8bbb8c92a2191937eecdbc62dcb7" />
+    <None Include=".git\objects\53\11e6d73396558ab4ee1c1cd9bf5562e91d8c08" />
+    <None Include=".git\objects\54\10382be14a992837375538c6847aa3c2b92942" />
+    <None Include=".git\objects\54\57a18db98e68457c8cf81e2b3cc1fa921d57df" />
+    <None Include=".git\objects\59\10bbf3dcd0cb09139b0c9926e00f96131d4757" />
+    <None Include=".git\objects\5e\eaf8f8c6921a67ded1b22eb9ed3f37e0996442" />
+    <None Include=".git\objects\61\cdf65d7b52462bc22e7b8340bb48bc89cde8dc" />
+    <None Include=".git\objects\62\cd4edb9eaf42427d4538fb155a8116af999be5" />
+    <None Include=".git\objects\64\f61dcd5f78c7c2b3cb5a66f3d9eecf42fbf582" />
+    <None Include=".git\objects\6e\334e85d6d7158f9995dd2ca272fb52247b0fae" />
+    <None Include=".git\objects\6f\77f666110970f52e0d59ce282771f7504490f8" />
+    <None Include=".git\objects\71\a9ab0a3441772c4f62797ed93bb6f7c2865352" />
+    <None Include=".git\objects\73\5e83183f22df98c7f00aec0f767faa39856af9" />
+    <None Include=".git\objects\74\44a4bfad550b066287a277ac7bbdc75b0854c6" />
+    <None Include=".git\objects\77\b3d9db45e5755e490654e75059dc3c8c81c17e" />
+    <None Include=".git\objects\7f\1e70299c63fc0f02abbadba6500d7d9a4501dc" />
+    <None Include=".git\objects\80\69e126b72f3b184c24018c7b12ee3d5a6b9e35" />
+    <None Include=".git\objects\83\c31e349b0c74a2ea2e22748bb473c763315c6c" />
+    <None Include=".git\objects\88\8a75ffade8ab18473cc6a51a01fecf72db1607" />
+    <None Include=".git\objects\88\c7edea19c64fe5d1eed1ace7a289d662352db7" />
+    <None Include=".git\objects\8a\ae37e29c5817001b6851631ef2c5d148ab965e" />
+    <None Include=".git\objects\8a\fb9f1ebc51b351137626208e0b92b1ba214530" />
+    <None Include=".git\objects\90\823f61e7bba7dd4ce603811a8b4743658932de" />
+    <None Include=".git\objects\90\c9a9c6a2738cf31a64190b775253e81f0eedb8" />
+    <None Include=".git\objects\92\dabaa160470337a1235c9c07119b952d5995dd" />
+    <None Include=".git\objects\94\91a2fda28342ab358eaf234e1afe0c07a53d62" />
+    <None Include=".git\objects\97\13e3b1548cc2ee78c60ad4ffb3a46566609b2b" />
+    <None Include=".git\objects\97\472b8d75edfdbfc021378504c887d9a085b714" />
+    <None Include=".git\objects\98\ff411b06f8d52fac798acd8e16d85978853bdf" />
+    <None Include=".git\objects\9b\27a274160f734cc2b2ecbace8c7891669fb439" />
+    <None Include=".git\objects\a1\1486d6e67b260311d9424d1f98ad7679451e7e" />
+    <None Include=".git\objects\a1\1adc2a6937d6abb8f50e022f1f165763c9f5ac" />
+    <None Include=".git\objects\a4\9f81a32a7545ce990db5c3b81ffbf7b2d79291" />
+    <None Include=".git\objects\a7\433541078374dea8bddfec1cdc88336806fc33" />
+    <None Include=".git\objects\ad\8ed9c78ff9d644a3e19171c4f577b5d2419c36" />
+    <None Include=".git\objects\ad\90eba590dbff1eb1c8470ea1c85539a85908d9" />
+    <None Include=".git\objects\b0\0a00d4cfaae51dc8f285e22b450ba08856f7c0" />
+    <None Include=".git\objects\b5\d7f812526c8854d29bdb3038d9c3925880dbf7" />
+    <None Include=".git\objects\b6\cf72403f68a31335db234ae2e0367fe8fe0ac4" />
+    <None Include=".git\objects\b8\5e3d3c70f291b467eee58839938adea50acb51" />
+    <None Include=".git\objects\b8\874a6bda4a89da81fe7fff92e81ce1e0188ec9" />
+    <None Include=".git\objects\b9\80f235316499d82bd19c91edd13a9cf073168f" />
+    <None Include=".git\objects\ba\77c7da0aefdffee5c454be9c8205bb330abaf4" />
+    <None Include=".git\objects\bb\a22a1834d06dd120ab0a528fd41926e821951b" />
+    <None Include=".git\objects\c1\5061d2f1da4a8aa7ee646ee2e228672168f7cc" />
+    <None Include=".git\objects\c2\a504b0c75e48b77b1de95940303b99da70e673" />
+    <None Include=".git\objects\c5\88afa4dd33a015b3bfa131ac356022cb284e1e" />
+    <None Include=".git\objects\c6\5238fb38a1938a8e8c4396432f1092cc79e8f1" />
+    <None Include=".git\objects\c8\c2f73c209781f4503ac7c35dc5b248fad98776" />
+    <None Include=".git\objects\c9\67ec59e44013fc5c006a8fa89212f9701cdacf" />
+    <None Include=".git\objects\d0\d4a42ce90868f75bd777238265294cfe958e6f" />
+    <None Include=".git\objects\d3\8b69e924cdd86ff486041853122e8e7ddcec06" />
+    <None Include=".git\objects\d4\7eb2096c4ad1a1606aa2dd25af2fa22efba241" />
+    <None Include=".git\objects\d4\a4eb4d07ad58035cbddc58ee3776d1b3b49263" />
+    <None Include=".git\objects\d4\f4195571c295472f542d7ae2255cd2569a7ee3" />
+    <None Include=".git\objects\d4\f48c8fbfb3b7203d91f2458876928ee559b72e" />
+    <None Include=".git\objects\d7\0a83b71c5ba6e8bc2371adf4e687c3020e4698" />
+    <None Include=".git\objects\d9\519e07221794f6b15ea7042645494050d41fd5" />
+    <None Include=".git\objects\da\afbef0e237f935b3c1b16fe56ae81fd7b3fc6f" />
+    <None Include=".git\objects\da\cacb909a1fc730d1a4df72af4b3de0e40cdefc" />
+    <None Include=".git\objects\dd\9347b397428ddf39b3cbb4fb1c288674731696" />
+    <None Include=".git\objects\e6\2191e0710979a5a499291ac4bc44ab1fb3ec63" />
+    <None Include=".git\objects\e6\9de29bb2d1d6434b8b29ae775ad8c2e48c5391" />
+    <None Include=".git\objects\e7\82a3dd1da7c8b6e46bd7d8410ad2828a4166a1" />
+    <None Include=".git\objects\ec\0546c073b4c7db241ec16f05b99bab2b47c31b" />
+    <None Include=".git\objects\f0\cf8de149040e9c9630c000f713a229a4c38c2f" />
+    <None Include=".git\objects\f1\1c469331881403c68b1a98134ac237f1a72aad" />
+    <None Include=".git\objects\f2\88702d2fa16d3cdf0035b15a9fcbc552cd88e7" />
+    <None Include=".git\objects\f2\e56a7307eb7a02228c9dfdbcaa865b139e625e" />
+    <None Include=".git\objects\f5\e894aea93a73e58fa9d4feab241bc197ee1a40" />
+    <None Include=".git\objects\f6\3b350a0ae936ccc652039bc8de46eee9c57560" />
+    <None Include=".git\objects\f7\c033f658a8a1809ff408a59b3e69eb14a45db3" />
+    <None Include=".git\objects\f8\2c6464fc5359896fbd6c6007da77a95e5eadf1" />
+    <None Include=".git\objects\fa\4e3fd76cbfc76cbffc3e7c9efd13e8b37f26f2" />
+    <None Include=".git\objects\fb\e217b7d6450045fc776b1b1f2b9988aa1f5859" />
+    <None Include=".git\objects\fd\b9706c47edd6953af4b46dc5feb0160f310a60" />
+    <None Include=".git\objects\fe\abb2010fe45f17e017d54e0fc8109d423f99a6" />
+    <None Include=".git\objects\ff\9a8d55e88f182a595f9209fd6525ba2f8a848f" />
+    <None Include=".git\refs\heads\main" />
+    <None Include=".git\refs\heads\UpgradeTo3X" />
+    <None Include=".git\refs\remotes\origin\main" />
+    <None Include=".git\refs\tags\Final_2x" />
+    <None Include="Images\Toolbar1.PNG" />
+    <None Include="Images\Toolbar2.PNG" />
+    <None Include="Install\ORMAPCancelledNumbers.esriAddinX" />
+    <None Include="packages\DotNetProjects.WpfToolkit.Input.6.1.94\.signature.p7s" />
+    <None Include="packages\DotNetProjects.WpfToolkit.Input.6.1.94\DotNetProjects.WpfToolkit.Input.6.1.94.nupkg" />
+    <None Include="packages\DotNetProjects.WpfToolkit.Input.6.1.94\lib\net40\DotNetProjects.Input.Toolkit.dll" />
+    <None Include="packages\DotNetProjects.WpfToolkit.Input.6.1.94\lib\net5.0-windows7.0\DotNetProjects.Input.Toolkit.dll" />
+    <None Include="packages\DotNetProjects.WpfToolkit.Input.6.1.94\lib\net6.0-windows7.0\DotNetProjects.Input.Toolkit.dll" />
+    <None Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\.signature.p7s" />
+    <None Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\Microsoft.Xaml.Behaviors.Wpf.1.1.39.nupkg" />
+    <None Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll" />
+    <None Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.pdb" />
+    <None Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.xml" />
+    <None Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Design\Microsoft.Xaml.Behaviors.Design.dll" />
+    <None Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net5.0-windows7.0\Microsoft.Xaml.Behaviors.dll" />
+    <None Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net5.0-windows7.0\Microsoft.Xaml.Behaviors.pdb" />
+    <None Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net5.0-windows7.0\Microsoft.Xaml.Behaviors.xml" />
+    <None Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net5.0-windows7.0\Design\Microsoft.Xaml.Behaviors.DesignTools.dll" />
+    <None Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\netcoreapp3.1\Microsoft.Xaml.Behaviors.dll" />
+    <None Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\netcoreapp3.1\Microsoft.Xaml.Behaviors.pdb" />
+    <None Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\netcoreapp3.1\Microsoft.Xaml.Behaviors.xml" />
+    <None Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\netcoreapp3.1\Design\Microsoft.Xaml.Behaviors.DesignTools.dll" />
+    <None Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\tools\Install.ps1" />
+    <None Include="packages\System.Runtime.4.3.1\.signature.p7s" />
+    <None Include="packages\System.Runtime.4.3.1\dotnet_library_license.txt" />
+    <None Include="packages\System.Runtime.4.3.1\System.Runtime.4.3.1.nupkg" />
+    <None Include="packages\System.Runtime.4.3.1\ThirdPartyNotices.txt" />
+    <None Include="packages\System.Runtime.4.3.1\lib\MonoAndroid10\_._" />
+    <None Include="packages\System.Runtime.4.3.1\lib\MonoTouch10\_._" />
+    <None Include="packages\System.Runtime.4.3.1\lib\net45\_._" />
+    <None Include="packages\System.Runtime.4.3.1\lib\net462\System.Runtime.dll" />
+    <None Include="packages\System.Runtime.4.3.1\lib\portable-net45+win8+wp80+wpa81\_._" />
+    <None Include="packages\System.Runtime.4.3.1\lib\win8\_._" />
+    <None Include="packages\System.Runtime.4.3.1\lib\wp80\_._" />
+    <None Include="packages\System.Runtime.4.3.1\lib\wpa81\_._" />
+    <None Include="packages\System.Runtime.4.3.1\lib\xamarinios10\_._" />
+    <None Include="packages\System.Runtime.4.3.1\lib\xamarinmac20\_._" />
+    <None Include="packages\System.Runtime.4.3.1\lib\xamarintvos10\_._" />
+    <None Include="packages\System.Runtime.4.3.1\lib\xamarinwatchos10\_._" />
+    <None Include="packages\System.Runtime.4.3.1\ref\MonoAndroid10\_._" />
+    <None Include="packages\System.Runtime.4.3.1\ref\MonoTouch10\_._" />
+    <None Include="packages\System.Runtime.4.3.1\ref\net45\_._" />
+    <None Include="packages\System.Runtime.4.3.1\ref\net462\System.Runtime.dll" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netcore50\System.Runtime.dll" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netcore50\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netcore50\de\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netcore50\es\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netcore50\fr\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netcore50\it\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netcore50\ja\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netcore50\ko\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netcore50\ru\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netcore50\zh-hans\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netcore50\zh-hant\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.0\System.Runtime.dll" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.0\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.0\de\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.0\es\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.0\fr\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.0\it\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.0\ja\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.0\ko\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.0\ru\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.0\zh-hans\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.0\zh-hant\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.2\System.Runtime.dll" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.2\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.2\de\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.2\es\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.2\fr\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.2\it\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.2\ja\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.2\ko\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.2\ru\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.2\zh-hans\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.2\zh-hant\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.3\System.Runtime.dll" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.3\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.3\de\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.3\es\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.3\fr\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.3\it\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.3\ja\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.3\ko\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.3\ru\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.3\zh-hans\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.3\zh-hant\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.5\System.Runtime.dll" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.5\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.5\de\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.5\es\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.5\fr\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.5\it\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.5\ja\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.5\ko\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.5\ru\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.5\zh-hans\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\netstandard1.5\zh-hant\System.Runtime.xml" />
+    <None Include="packages\System.Runtime.4.3.1\ref\portable-net45+win8+wp80+wpa81\_._" />
+    <None Include="packages\System.Runtime.4.3.1\ref\win8\_._" />
+    <None Include="packages\System.Runtime.4.3.1\ref\wp80\_._" />
+    <None Include="packages\System.Runtime.4.3.1\ref\wpa81\_._" />
+    <None Include="packages\System.Runtime.4.3.1\ref\xamarinios10\_._" />
+    <None Include="packages\System.Runtime.4.3.1\ref\xamarinmac20\_._" />
+    <None Include="packages\System.Runtime.4.3.1\ref\xamarintvos10\_._" />
+    <None Include="packages\System.Runtime.4.3.1\ref\xamarinwatchos10\_._" />
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Toolbar1.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Toolbar2.PNG" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!--
-  PackageAction can be:
-  BuildDefault: ArcGIS Pro is required. An esriAddinX package is created and copied to ArcGIS Pro add-in folder.
-  BuildZipPostProcess: ArcGIS Pro install is NOT required to build the add-in.  An esriAddinX package is created in your output folder.
-  BuildNoPostProcess:  ArcGIS Pro install is NOT required to build the add-in.  An esriAddinX package is NOT created.
-  -->
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
-    <PackageAction>BuildDefault</PackageAction>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
-    <PackageAction>BuildDefault</PackageAction>
-  </PropertyGroup>
-  <UsingTask AssemblyFile="C:\Program Files\ArcGIS\Pro\bin\proapp-sdk-MSBuild.dll" TaskName="proapp_sdk_MSBuild.PackageAddIn" />
-  <UsingTask AssemblyFile="C:\Program Files\ArcGIS\Pro\bin\proapp-sdk-MSBuild.dll" TaskName="proapp_sdk_MSBuild.CleanAddIn" />
-  <UsingTask AssemblyFile="C:\Program Files\ArcGIS\Pro\bin\proapp-sdk-MSBuild.dll" TaskName="proapp_sdk_MSBuild.ConvertToRelativePath" />
-  <!--<Import Project="Esri.ArcGISPro.Extensions.targets" Condition="Exists('Esri.ArcGISPro.Extensions.targets')" />-->
   <Import Project="C:\Program Files\ArcGIS\Pro\bin\Esri.ProApp.SDK.Desktop.targets" Condition="Exists('C:\Program Files\ArcGIS\Pro\bin\Esri.ProApp.SDK.Desktop.targets') AND !Exists('Esri.ArcGISPro.Extensions.targets')" />
-  <PropertyGroup>
-    <PostBuildEvent>if $(ConfigurationName) == Release copy /Y "$(TargetDir)$(ProjectName).esriAddinX" "$(SolutionDir)Install\$(ProjectName).esriAddinX"</PostBuildEvent>
-  </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  -->
-  <Target Name="AfterBuild" DependsOnTargets="PackageArcGISContents">
+  <Target Name="SignAddin" AfterTargets="PackageArcGISContents">
     <!--Replace the path in the sample command below to your pfx file on disk and use the 
         password that has been assigned to the pfx file.  Confirm that the path to ArcGIS 
         Pro bin folder matches your installation location.-->
     <Exec Command="&quot;C:\Program Files\ArcGIS\Pro\bin\ArcGISSignAddIn.exe&quot; $(TargetDir)$(TargetName).esriAddInX /c:D:\temp\DCWildCardCert2021-22.pfx /p:L0ck++down /s" />
   </Target>
-  <!--<Target Name="BeforeBuild">
-    <Error Text="C:\Program Files\ArcGIS\Pro\bin\Esri.ProApp.SDK.Desktop.targets not found." Condition="!Exists('C:\Program Files\ArcGIS\Pro\bin\Esri.ProApp.SDK.Desktop.targets') AND !Exists('Esri.ArcGISPro.Extensions.targets')" />
-  </Target>-->
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="if $(ConfigurationName) == Release copy /Y &quot;$(TargetDir)$(ProjectName).esriAddinX&quot; &quot;$(SolutionDir)Install\$(ProjectName).esriAddinX&quot;" />
+  </Target>
 </Project>
