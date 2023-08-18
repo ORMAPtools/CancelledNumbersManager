@@ -9,13 +9,13 @@ The ORMAP Cancelled Numbers Manager is an Add-in for ArcGIS Pro that helps manag
 ![alt text](https://raw.githubusercontent.com/ORMAPtools/CancelledNumbersManager/main/Images/Toolbar2.PNG "Image of the toolbar")
 
 ## Download
-The download contains the Add-in. Additional information about installation and requirments are below.
-> [DOWNLOAD NOW](https://raw.githubusercontent.com/ORMAPtools/CancelledNumbersManager/master/Install/ORMAPCancelledNumbers.esriAddinX).
-
+These downloads contains the Add-ins. Additional information about installation and requirments are below.
+> [DOWNLOAD FOR ARCGIS PRO VERSION 2.x NOW](https://raw.githubusercontent.com/ORMAPtools/CancelledNumbersManager/master/Install/ORMAPCancelledNumbers_2x.esriAddinX).
+> [DOWNLOAD FOR ARCGIS PRO VERSION 3.x NOW](https://raw.githubusercontent.com/ORMAPtools/CancelledNumbersManager/master/Install/ORMAPCancelledNumbers.esriAddinX).
 
 ## Installation
 Installation instructions for add-ins can be found HERE:
-> [Manage add-ins](https://raw.githubusercontent.com/ORMAPtools/CancelledNumbersManager/master/Install/ORMAPCancelledNumbers.esriAddinX).
+> [Manage add-ins](https://pro.arcgis.com/en/pro-app/latest/get-started/manage-add-ins.htm).
 
 This Add-In has a few requirements.
 1.	A standalone table named "CancelledNumbers" must exist in the table of contents (the database name does not matter, only the name in the table of contents).  
